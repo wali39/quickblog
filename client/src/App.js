@@ -7,7 +7,8 @@ import { Route, Routes } from "react-router-dom"
 function App() {
   return (
     <div >
-      <ul>
+      <ul className='navbar'>
+        <li className='logo'><a href='/'>QuickBlog</a></li>
         <li><a href="/">Home</a></li>
         <li><a href="/addpost">add post</a></li>
       </ul>
