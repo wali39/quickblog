@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar {
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.685);
+  margin: 0;
+  padding: 20px;
+}
+.navbar li {
+  display: inline-block;
+}
+.navbar li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+}
+.navbar li a:hover{
+  background-color: rgb(165, 154, 154);
+  border-radius: 5%;
+
+}
+.navbar .logo{
+  margin-right: 200px;
+  font-weight: 700;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
