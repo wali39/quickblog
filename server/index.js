@@ -7,8 +7,37 @@ const PORT = 4000;
 app.use(express.json());
 
 app.get("/api/get", (req, res) => {
-    res.status(200).send("hello world!!");
-})
+    db.query("SELECT * FROM posts", (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        res.status(200).send(result);
+    })
+
+});
+
+app.post("/api/create", (req, res) => {
+    const { title, text } = req.body;
+    db.query(`SELECT * FROM posts WHERE title= "${title}"`, (err, result) => {
+        if (err)
+            console.log(err);
+
+        if (result.length == 0) {
+
+            db.query("insert into posts  (title,post_text) values(?,?)", [title, text], (err, result) => {
+                if (err)
+                    console.log(err)
+                res.status(200).send("created")
+            })
+        }
+        else {
+            console.log("duplicate found");
+            res.status(200).send("duplicate found")
+        }
+
+
+    })
+});
 
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT}`);
