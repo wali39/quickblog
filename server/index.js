@@ -1,11 +1,11 @@
 const express = require("express");
 const db = require("./config/db")
-
+const cors = require("cors");
 const app = express();
 
 const PORT = 4000;
 app.use(express.json());
-
+app.use(cors());
 app.get("/api/get", (req, res) => {
     db.query("SELECT * FROM posts", (err, result) => {
         if (err) {
