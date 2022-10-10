@@ -39,6 +39,17 @@ app.post("/api/create", (req, res) => {
     })
 });
 
+app.delete("/api/delete/:id", (req, res) => {
+    const id = req.params.id;
+    db.query("delete from posts where id= ?", id, (err, result) => {
+        if (err)
+            console.log(err);
+
+        console.log(result);
+        res.status(200).send("deleted");
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT}`);
 })
